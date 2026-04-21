@@ -1,11 +1,20 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import heroImg from './assets/hero.png'
 import './App.css'
+import AppHome from '../pages/AppHome'
+import AppMovie from '../pages/AppMovie'
 
 function App() {
 
   return (
     <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AppHome />} />
+          <Route path="book/id" element={<AppMovie />} />
+        </Routes>
+      </BrowserRouter>
 
     </>
   )
