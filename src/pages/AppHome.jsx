@@ -9,7 +9,6 @@ export default function AppHome() {
         fetch('http://localhost:3010/api/movies')
             .then(res => res.json())
             .then(data => setDataMovies(data))
-
     }, [])
 
     return (
