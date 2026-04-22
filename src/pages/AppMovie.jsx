@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 export default function AppMovie() {
 
-    const [dataMovie, setDataMovie] = useState({})
+    const [dataMovie, setDataMovie] = useState(null)
 
     const { id } = useParams();
 
@@ -17,7 +17,9 @@ export default function AppMovie() {
 
     return (
         <>
-            <h1>{dataMovie.title}</h1>
+            {
+                <h1>{dataMovie?.title}</h1>
+            }
         </>
     )
 

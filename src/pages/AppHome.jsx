@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import AppCard from "../components/AppCard"
 
 
 export default function AppHome() {
@@ -16,7 +17,9 @@ export default function AppHome() {
             <h1>homepage</h1>
             {
                 dataMovies?.map(movie => (
-                    <p key={movie.id}>{movie.title}</p>
+                    <div key={movie.id}>
+                        <AppCard movie={movie} />
+                    </div>
                 ))
 
             }
