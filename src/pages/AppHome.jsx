@@ -11,6 +11,8 @@ export default function AppHome() {
             .then(res => res.json())
             .then(data => setDataMovies(data))
     }, [])
+    
+    
 
     return (
         <>

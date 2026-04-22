@@ -34,12 +34,26 @@ export default function AppMovie() {
                                     <div className="">
                                         <h1>{dataMovie.title}</h1>
                                         <p>{dataMovie.abstract}</p>
-                                        <p>{dataMovie.director}</p>
-                                        <p>{dataMovie.genre}</p>
-                                        <p>{dataMovie.release_year}</p>
+                                        <p>Director: {dataMovie.director}</p>
+                                        <p>Genre: {dataMovie.genre}</p>
+                                        <p>Release year: {dataMovie.release_year}</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className="py-3">
+                            <h3 className="h4">Reviews</h3>
+                            {
+                                dataMovie.reviews.map(review => (
+                                    <div key={review.id}>
+                                        <div className="py-3">
+                                            <div>{review.name} Vote: {review.vote}</div>
+                                            <div>{review.text}</div>
+                                            <div>{new Date(review.created_at).toLocaleDateString("it-IT")}</div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>

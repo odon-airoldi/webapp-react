@@ -1,9 +1,11 @@
 export default function AppFooter() {
 
     return (
-        <>
-            Footer
-        </>
+        <footer>
+            <div className="p-3 text-center">
+                Movies
+            </div>
+        </footer>
     )
 
 }
