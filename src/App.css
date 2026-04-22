@@ -16,6 +16,10 @@
     }
 }
 
+.card {
+    cursor: pointer;
+}
+
 .movie-panel {
     margin-top: -64px
 }

@@ -5,10 +5,6 @@ export default function AppCard({ movie, openModal }) {
 
     const [modal, setModal] = useState('')
 
-    const modalToggle = function () {
-
-    }
-
     return (
         <div>
             <div className="card text-decoration-none" onClick={openModal}>

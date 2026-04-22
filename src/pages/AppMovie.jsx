@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import AppMovieReviews from "../components/appMovieReviews";
 
 
 export default function AppMovie() {
@@ -45,13 +46,7 @@ export default function AppMovie() {
                             <h3 className="h4">Reviews</h3>
                             {
                                 dataMovie.reviews.map(review => (
-                                    <div key={review.id}>
-                                        <div className="py-3">
-                                            <div>{review.name} Vote: {review.vote}</div>
-                                            <div>{review.text}</div>
-                                            <div>{new Date(review.created_at).toLocaleDateString("it-IT")}</div>
-                                        </div>
-                                    </div>
+                                    <AppMovieReviews review={review} key={review.id} />
                                 ))
                             }
                         </div>
