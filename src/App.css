@@ -19,3 +19,7 @@
 .movie-panel {
     margin-top: -64px
 }
+
+.modal-card {
+    max-width: 320px;
+}

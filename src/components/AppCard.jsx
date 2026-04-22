@@ -1,26 +1,25 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export default function AppCard({ movie }) {
+export default function AppCard({ movie, openModal }) {
 
     const [modal, setModal] = useState('')
 
-    const modalToggle = function() {
-        
+    const modalToggle = function () {
+
     }
 
     return (
         <div>
-            <Link className="card text-decoration-none" to={`movie/${movie.id}`}>
+            <div className="card text-decoration-none" onClick={openModal}>
                 <div className="">
                     <img src={`http://localhost:3010/img/${movie.image}`} className="card-img-top ratio ratio-3x4 object-fit-cover" alt="..." />
                 </div>
                 <div className="card-body">
                     <h5 className="card-title mb-0">{movie.title}</h5>
                 </div>
-            </Link>
-            <div className="modal">click</div>
-        </div>
+            </div>
+        </div >
     )
 }
 
