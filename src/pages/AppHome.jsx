@@ -14,15 +14,18 @@ export default function AppHome() {
 
     return (
         <>
-            <h1>homepage</h1>
-            {
-                dataMovies?.map(movie => (
-                    <div key={movie.id}>
-                        <AppCard movie={movie} />
-                    </div>
-                ))
+            <div className="container py-4">
+                <div className="row g-2 row-cols-5">
+                    {
+                        dataMovies?.map(movie => (
+                            <div key={movie.id}>
+                                <AppCard movie={movie} />
+                            </div>
+                        ))
 
-            }
+                    }
+                </div>
+            </div>
         </>
     )
 

@@ -4,8 +4,14 @@ import { Link } from "react-router-dom"
 export default function AppCard({ movie }) {
 
     return (
-        <Link className="border" to={`movie/${movie.id}`}>
-            <p key={movie.id}>{movie.title}</p>
+        <Link className="card text-decoration-none" to={`movie/${movie.id}`}>
+            <div className="">
+                <img src={`http://localhost:3010/img/${movie.image}`} className="card-img-top ratio ratio-3x4 object-fit-cover" alt="..." />
+            </div>
+            <div className="card-body">
+                <h5 className="card-title mb-0">{movie.title}</h5>
+            </div>
         </Link>
     )
 }
+

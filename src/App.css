@@ -1,0 +1,21 @@
+.ratio-3x4 {
+    aspect-ratio: 3/4;
+}
+
+.hero {
+    overflow: hidden;
+
+    .hero-content {
+        margin: -16px;
+
+        img {
+            aspect-ratio: 16/4;
+            object-position: center 20%;
+            filter: blur(8px)
+        }
+    }
+}
+
+.movie-panel {
+    margin-top: -64px
+}
