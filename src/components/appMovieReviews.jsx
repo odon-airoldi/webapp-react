@@ -1,26 +1,22 @@
-export default function AppMovieReviews({ review }) {
+import AppMovieReview from "./AppMovieReview"
 
-    let i = 0;
-    let stars = []
+export default function AppMovieReviews({ dataMovie }) {
 
-    while (i < review.vote) {
-        stars.push(i)
-        i++;
-    }
 
     return (
-        <div className="py-3">
-            <div>{review.name} Vote: {review.vote}</div>
-            <div>
-                {
-                    stars.map((star, i) => (
-                        <span key={i}>*</span>
-                    ))
-                }
-            </div>
-            <div>{review.text}</div>
-            <div>{new Date(review.created_at).toLocaleDateString("it-IT")}</div>
-        </div>
+        <>
+            {dataMovie && (
+                <div className="py-3">
+                    <h3 className="h4">Reviews</h3>
+                    {
+                        dataMovie.reviews.map(review => (
+                            <AppMovieReview review={review} key={review.id} />
+                        ))
+                    }
+                </div>
+            )}
+        </>
+
     )
 
 }

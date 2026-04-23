@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import AppMovieReviews from "../components/appMovieReviews";
+import AppMovieReviews from "../components/AppMovieReviews";
 
 
 export default function AppMovie() {
@@ -9,6 +9,10 @@ export default function AppMovie() {
 
     const { id } = useParams();
 
+    // average vote
+    const revs = dataMovie?.reviews
+    let sum_votes = revs?.reduce((acc, rev) => acc + rev.vote, 0)
+    let avg_votes = sum_votes / dataMovie?.reviews.length
 
     useEffect(() => {
         fetch(`http://localhost:3010/api/movies/${id}`)
@@ -38,18 +42,12 @@ export default function AppMovie() {
                                         <p>Director: {dataMovie.director}</p>
                                         <p>Genre: {dataMovie.genre}</p>
                                         <p>Release year: {dataMovie.release_year}</p>
+                                        <p>Average vote: {avg_votes}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="py-3">
-                            <h3 className="h4">Reviews</h3>
-                            {
-                                dataMovie.reviews.map(review => (
-                                    <AppMovieReviews review={review} key={review.id} />
-                                ))
-                            }
-                        </div>
+                        <AppMovieReviews dataMovie={dataMovie} />
                     </div>
                 </div>
             )}
