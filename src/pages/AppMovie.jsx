@@ -48,6 +48,34 @@ export default function AppMovie() {
                             </div>
                         </div>
                         <AppMovieReviews dataMovie={dataMovie} />
+
+                        <div className="py-3">
+                            <h3 className="h4">Add Review</h3>
+                            <form className="row g-3">
+                                <div className="col-12">
+                                    <label htmlFor="inputName" className="form-label">Name</label>
+                                    <input type="text" className="form-control" id="inputName" placeholder="Your name" />
+                                </div>
+                                <div className="col-12">
+                                    <label htmlFor="inputVote" className="form-label">Vote</label>
+                                    <select id="inputVote" className="form-select">
+                                        <option defaultValue>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                                <div className="col-12">
+                                    <label htmlFor="floatingTextarea2" className="form-label">Text</label>
+                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
+                                </div>
+                                <div className="col-12">
+                                    <button type="submit" className="btn btn-primary">Sign in</button>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             )}
