@@ -7,6 +7,20 @@ export default function AppMovie() {
 
     const [dataMovie, setDataMovie] = useState(null)
 
+    const [newRev, setNewRev] = useState({
+        name: '',
+        vote: 0,
+        text: ''
+    })
+
+    function handleChange(e) {
+        const { name, value } = e.target
+        setNewRev({
+            ...newRev,
+            [name]: name === 'vote' ? Number(value) : value
+        })
+    }
+
     const { id } = useParams();
 
     // average vote
@@ -19,6 +33,25 @@ export default function AppMovie() {
             .then(res => res.json())
             .then(data => setDataMovie(data))
     }, [id])
+
+    function handleSubmit(e) {
+
+        e.preventDefault()
+
+        fetch(`http://localhost:3010/api/movies/${id}/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newRev)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+    }
+
+
+    // console.log(newRev)
 
     return (
         <div>
@@ -51,24 +84,24 @@ export default function AppMovie() {
 
                         <div className="py-3">
                             <h3 className="h4">Add Review</h3>
-                            <form className="row g-3">
+                            <form className="row g-3" onSubmit={handleSubmit}>
                                 <div className="col-12">
                                     <label htmlFor="inputName" className="form-label">Name</label>
-                                    <input type="text" className="form-control" id="inputName" placeholder="Your name" />
+                                    <input type="text" className="form-control" id="inputName" placeholder="Your name" name="name" value={newRev.name} onChange={handleChange} />
                                 </div>
                                 <div className="col-12">
                                     <label htmlFor="inputVote" className="form-label">Vote</label>
-                                    <select id="inputVote" className="form-select">
-                                        <option defaultValue>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select id="inputVote" className="form-select" name="vote" value={newRev.vote} onChange={handleChange}>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </div>
                                 <div className="col-12">
-                                    <label htmlFor="floatingTextarea2" className="form-label">Text</label>
-                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
+                                    <label htmlFor="Textarea" className="form-label">Text</label>
+                                    <textarea className="form-control" placeholder="Leave a comment here" id="Textarea" name="text" value={newRev.text} onChange={handleChange}></textarea>
                                 </div>
                                 <div className="col-12">
                                     <button type="submit" className="btn btn-primary">Sign in</button>
