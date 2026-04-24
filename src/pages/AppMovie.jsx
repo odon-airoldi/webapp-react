@@ -9,9 +9,12 @@ export default function AppMovie() {
 
     const [newRev, setNewRev] = useState({
         name: '',
-        vote: 0,
+        vote: '',
         text: ''
     })
+
+    const { id } = useParams();
+
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -20,8 +23,6 @@ export default function AppMovie() {
             [name]: name === 'vote' ? Number(value) : value
         })
     }
-
-    const { id } = useParams();
 
     // average vote
     const revs = dataMovie?.reviews
@@ -45,8 +46,22 @@ export default function AppMovie() {
             },
             body: JSON.stringify(newRev)
         })
+
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                // update ui
+                setDataMovie(prev => ({
+                    ...prev,
+                    reviews: [...prev.reviews, data.review]
+                }))
+
+                // reset form
+                setNewRev({
+                    name: '',
+                    vote: '',
+                    text: ''
+                })
+            })
 
     }
 
@@ -80,6 +95,7 @@ export default function AppMovie() {
                                 </div>
                             </div>
                         </div>
+
                         <AppMovieReviews dataMovie={dataMovie} />
 
                         <div className="py-3">
