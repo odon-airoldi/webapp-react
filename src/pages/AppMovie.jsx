@@ -1,9 +1,13 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import AppMovieReviews from "../components/AppMovieReviews";
+import { useGlobal } from "../../context/GlobalContext";
+
 
 
 export default function AppMovie() {
+
+    const { prova } = useGlobal();
 
     const [dataMovie, setDataMovie] = useState(null)
 
@@ -26,8 +30,8 @@ export default function AppMovie() {
 
     // average vote
     const revs = dataMovie?.reviews
-    let sum_votes = revs?.reduce((acc, rev) => acc + rev.vote, 0)
-    let avg_votes = sum_votes / dataMovie?.reviews.length
+    let sum_votes = revs?.reduce((acc, rev) => acc + rev.vote, 0) / dataMovie?.reviews.length
+    let avg_votes = Number(sum_votes.toFixed(2))
 
     useEffect(() => {
         fetch(`http://localhost:3010/api/movies/${id}`)
@@ -91,6 +95,7 @@ export default function AppMovie() {
                                         <p>Genre: {dataMovie.genre}</p>
                                         <p>Release year: {dataMovie.release_year}</p>
                                         <p>Average vote: {avg_votes}</p>
+                                        {prova}
                                     </div>
                                 </div>
                             </div>

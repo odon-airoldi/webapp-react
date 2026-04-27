@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { GlobalProvider } from '../context/GlobalContext'
 import heroImg from './assets/hero.png'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -11,16 +12,17 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<AppHome />} />
-            <Route path="movie/:id" element={<AppMovie />} />
-            <Route path="*" element={<AppHome />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<AppHome />} />
+              <Route path="movie/:id" element={<AppMovie />} />
+              <Route path="*" element={<AppHome />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
     </>
   )
 }

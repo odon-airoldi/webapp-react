@@ -2,7 +2,6 @@ import AppMovieReview from "./AppMovieReview"
 
 export default function AppMovieReviews({ dataMovie }) {
 
-
     return (
         <>
             {dataMovie && (
