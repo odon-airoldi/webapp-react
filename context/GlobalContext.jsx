@@ -1,14 +1,24 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const GlobalContext = createContext();
 
 
 function GlobalProvider({ children }) {
 
-    const prova = 2
+    const [dataMovies, setDataMovies] = useState(null)
+    const [modalMovie, setModalMovie] = useState(null)
+
+    useEffect(() => {
+        fetch('http://localhost:3010/api/movies')
+            .then(res => res.json())
+            .then(data => setDataMovies(data))
+    }, [])
+
 
     return (
-        <GlobalContext.Provider value={{ prova }}>
+        <GlobalContext.Provider value={{
+            dataMovies, modalMovie, setModalMovie
+        }}>
             {children}
         </GlobalContext.Provider>
     )

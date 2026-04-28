@@ -1,22 +1,12 @@
 import { useEffect, useState } from "react"
 import AppCard from "../components/AppCard"
 import { Link } from "react-router-dom"
+import { useGlobal } from "../../context/GlobalContext";
 
 
 export default function AppHome() {
 
-    const [dataMovies, setDataMovies] = useState(null)
-    const [modalMovie, setModalMovie] = useState(null)
-
-    console.log(modalMovie)
-
-    useEffect(() => {
-        fetch('http://localhost:3010/api/movies')
-            .then(res => res.json())
-            .then(data => setDataMovies(data))
-    }, [])
-
-
+    const { dataMovies, modalMovie, setModalMovie } = useGlobal();
 
     return (
         <section>

@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import AppMovieReviews from "../components/AppMovieReviews";
-import { useGlobal } from "../../context/GlobalContext";
+// import { useGlobal } from "../../context/GlobalContext";
 
 
 
 export default function AppMovie() {
 
-    const { prova } = useGlobal();
+    // const { } = useGlobal();
 
     const [dataMovie, setDataMovie] = useState(null)
 
@@ -70,7 +70,6 @@ export default function AppMovie() {
     }
 
 
-    // console.log(newRev)
 
     return (
         <div>
@@ -95,7 +94,6 @@ export default function AppMovie() {
                                         <p>Genre: {dataMovie.genre}</p>
                                         <p>Release year: {dataMovie.release_year}</p>
                                         <p>Average vote: {avg_votes}</p>
-                                        {prova}
                                     </div>
                                 </div>
                             </div>
