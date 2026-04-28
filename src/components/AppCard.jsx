@@ -1,9 +1,6 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
 
 export default function AppCard({ movie, openModal }) {
-
-    const [modal, setModal] = useState('')
 
     return (
         <div>

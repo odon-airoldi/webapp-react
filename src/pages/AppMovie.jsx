@@ -1,13 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import AppMovieReviews from "../components/AppMovieReviews";
-// import { useGlobal } from "../../context/GlobalContext";
-
 
 
 export default function AppMovie() {
-
-    // const { } = useGlobal();
 
     const [dataMovie, setDataMovie] = useState(null)
 
@@ -18,7 +14,6 @@ export default function AppMovie() {
     })
 
     const { id } = useParams();
-
 
     function handleChange(e) {
         const { name, value } = e.target
