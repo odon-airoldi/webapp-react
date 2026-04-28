@@ -1,6 +1,14 @@
+/* utilities */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .ratio-3x4 {
     aspect-ratio: 3/4;
 }
+
+/* */
 
 .hero {
     overflow: hidden;
@@ -16,8 +24,10 @@
     }
 }
 
-.card {
-    cursor: pointer;
+.backdrop {
+    background-color: rgba(120, 120, 120, .5);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 }
 
 .movie-panel {
