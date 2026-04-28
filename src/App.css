@@ -37,3 +37,9 @@
 .modal-card {
     max-width: 320px;
 }
+
+.vote-star {
+    svg {
+        margin: 0 0.05rem;
+    }
+}
